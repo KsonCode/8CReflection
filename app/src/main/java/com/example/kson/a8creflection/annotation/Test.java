@@ -1,6 +1,7 @@
 package com.example.kson.a8creflection.annotation;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,15 @@ public class Test {
             e.printStackTrace();
         }
 
+        try {
+            Method method = c.getMethod("fun",String.class,int.class,int.class);
+            MyAnotation myAnotation1 = method.getAnnotation(MyAnotation.class);
+            if (myAnotation1!=null){
+                myAnotation1.name();
+            }
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
 
 
     }
